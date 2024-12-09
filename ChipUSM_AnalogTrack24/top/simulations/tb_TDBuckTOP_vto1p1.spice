@@ -1,0 +1,340 @@
+** sch_path: /home/designer/shared/design_data/xschem/top/tb_TDBuckTOP_vto1p1.sch
+**.subckt tb_TDBuckTOP_vto1p1
+L37 net1 V_inductor 275n m=1
+R3 V_inductor V_res 0 m=1
+V_res net1 ldo_out 0
+VH VH GND {VH}
+VVDIG VDIG GND {VDIG}
+C4 ldo_out VSS 32n m=1
+Vldo_out ldo_out v_rl 0
+RDIV1 ldo_out VCONTs 100e6 m=1
+RDIV2 VCONTs net2 50e6 m=1
+RDIV3 net2 GND 50e6 m=1
+x6 VCN VDIG VSS DOUT_D1_N sg13g2_buf_4
+XM1 V_res D1 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=12000
+XM2 VSS D1_N V_res VSS sg13_hv_nmos w=10u l=0.45u ng=1 m=4000
+x3 VCP VDIG VSS DOUT_D1 sg13g2_buf_4
+x7 V_1s_dl VDIG VSS V_1s_buff sg13g2_buf_4
+x12 V_1r_dl VDIG VSS V_1r_buff sg13g2_buf_4
+VDD_GD VDD_GD GND {VDD_GD}
+x5 VCONTs VSS VDD V_1s V_2s VCO_vto2p1
+x2 VCONTr VSS VDD V_1r V_2r VCO_vto2p1
+X9 DOUT_D1 D1 VDIG VDD_GD VSS VSS GD_vto1p1
+X4 DOUT_D1_N D1_N VDIG VDD_GD VSS VSS GD_vto1p1
+x11 V_1s VCONTr net3 VSS VDD VCDLtop_vto1p1
+x14 V_1r VCONTr net4 VSS VDD VCDLtop_vto1p1
+V2 VCONTr VSS pulse 0.6 0.9 75u 1u 1u 75u 150u
+X15 net3 V_1s_dl VDIG VSS LSHL_vto1p1
+X16 net4 V_1r_dl VDIG VSS LSHL_vto1p1
+x17 VDIG VSS V_1s_buff VCN VCP V_1r_buff DB
+**** begin user architecture code
+
+.param VDIG = 1.2
+.param VH = 3.3
+.param VDD_GD = 3.3
+*LATEST TDBuckLOADS
+*1000mA
+*.param RL = 1.2
+*RL v_rl gnd = 'TIME > 25u ? 120:1.2'
+RL v_rl gnd 1.2
+*100mA
+*.param RL = 12
+*80mA
+*.param RL = 15
+*40mA
+*.param RL = 30
+*20mA
+*.param RL = 60
+*10mA
+*.param RL = 120
+.save v(ldo_out) v(v_res) v(D1) v(D1_N) v(DOUT) v(VCONTr) v(VCONTs) v(V_1r) v(V_1s) v(V_1r_dl) v(V_1s_dl) v(V_1r_buff) v(V_1s_buff) v(V_1r_buff_sp) v(V_1s_buff_sp) v(vh) i(vh) v(vdd_gd) i(vdd_gd) i(v_res) v(vcp) v(vcn) i(vldo_out) i(vvdig) i(vvdd)
+vvdd vdd 0 dc 3.3
+vvss vss 0 0
+*vvcontr VCONTr 0 dc 0.6
+*vvconts VCONTs 0 dc 0.61
+*.option temp = 200
+.ic v(VCONTs) = 0.6
+.ic v(V_1s) = 0
+.ic v(V_2s) = 3.3
+.ic v(V_1r) = 3.3
+.ic v(V_2r) = 0
+.ic v(ldo_out) = 1.2
+*.ic v(V_res) = 1.2
+.ic v(V_inductor) = 1.2
+
+.option method=gear
+.option cshunt=0.01e-12
+
+.control
+*tran 2n 1m
+*tran 4n 250u
+tran 100p 150u
+*wrdata /home/designer/shared/TO202410_IHP_TDBuck/xschem/data/data_TDBuckTOP-IHP-CL_v7p2_TEST.txt tran.v(ldo_out) tran.i(vldo_out) tran.i(vh) tran.i(vdd_gd) tran.i(vvdig) tran.i(vvdd)
+plot v(ldo_out)
+plot v(v_res)
+plot v(D1) v(D1_N) i(VH)
+plot v(DOUT)
+plot v(VCONTr) v(VCONTs)
+plot v(V_1r_buff) v(V_1s_buff)+2 v(DOUT)+4
+plot i(vldo_out)
+*plot v(VCONTs_OL)
+.endc
+
+
+
+
+.param corner=0
+
+.if (corner==0)
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerCAP.lib cap_typ
+.endif
+
+.include /opt/pdks/ihp-sg13g2/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ../VCO/VCO_vto2p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/VCO/VCO_vto2p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/VCO/VCO_vto2p1.sch
+.subckt VCO_vto2p1 VCONT VSS VDD V_1 V_2
+*.ipin VCONT
+*.iopin VDD
+*.iopin VSS
+*.opin V_1
+*.opin V_2
+x1 VDD VCONT V_1_int V_5 VSS stage_vto2p1
+x2 VDD VSS V_2 V_1_int VSS stage_vto2p1
+x3 VDD VSS V_3 V_2 VSS stage_vto2p1
+x4 VDD VSS V_4 V_3 VSS stage_vto2p1
+x5 VDD VSS V_5 V_4 VSS stage_vto2p1
+XMD5 net1 V_1_int VDD VDD sg13_hv_pmos w=1u l=0.4u ng=1 m=2
+XMD6 net1 V_1_int VSS VSS sg13_hv_nmos w=1u l=0.45u ng=1 m=1
+XMD1 V_1 net1 VDD VDD sg13_hv_pmos w=1u l=0.4u ng=1 m=4
+XMD2 V_1 net1 VSS VSS sg13_hv_nmos w=1u l=0.45u ng=1 m=2
+.ends
+
+
+* expanding   symbol:  ../GD/GD_vto1p1.sym # of pins=6
+** sym_path: /home/designer/shared/design_data/xschem/GD/GD_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/GD/GD_vto1p1.sch
+.subckt GD_vto1p1 Vs Vg Vdd VH GND IGND
+*.iopin VH
+*.iopin Vdd
+*.ipin Vs
+*.opin Vg
+*.iopin GND
+*.iopin IGND
+XMD9 VgMD2 Vs Vdd Vdd sg13_lv_pmos w=1.12u l=0.13u ng=1 m=2
+XMD10 VgMD2 Vs GND GND sg13_lv_nmos w=1.12u l=0.13u ng=1 m=2
+XMD1 VgMD5 VgMD1 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+XMD3 VgMD1 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+XMD5 VgMD78 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=30
+XMD7 Vg VgMD78 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=250
+XMD2 VgMD5 VgMD2 IGND IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+XMD4 VgMD1 Vs IGND IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+XMD6 VgMD78 Vs IGND IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=25
+XMD8 Vg VgMD78 IGND IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=200
+**** begin user architecture code
+
+
+xMD1D  VgMD5   VH   VH   VH   sg13_hv_pmos L=0.4u W=10u M=1
+xMD3D  VgMD1   VH   VH   VH   sg13_hv_pmos L=0.4u W=10u M=1
+xMD5D  VgMD78  VH   VH   VH   sg13_hv_pmos L=0.4u W=10u M=2
+xMDPD  VH      VH   VH   VH   sg13_hv_pmos L=0.4u W=10u M=14
+xMD2D  VgMD5   IGND  IGND  IGND  sg13_hv_nmos L=0.45u W=10u M=2
+xMD4D  VgMD1   IGND  IGND  IGND  sg13_hv_nmos L=0.45u W=10u M=2
+xMD6D  VgMD78  IGND  IGND  IGND  sg13_hv_nmos L=0.45u W=10u M=1
+xMDND  IGND     IGND  IGND  IGND  sg13_hv_nmos L=0.45u W=10u M=58
+
+
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  ../VCDL/VCDLtop_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/VCDL/VCDLtop_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/VCDL/VCDLtop_vto1p1.sch
+.subckt VCDLtop_vto1p1 VIN VCONT VOUT VSS VDD
+*.ipin VIN
+*.opin VOUT
+*.iopin VDD
+*.iopin VSS
+*.ipin VCONT
+x1 VDD VCONT net1 VIN VSS VCDL_vto1p1
+x2 VDD VCONT VOUT net1 VSS VCDL_vto1p1
+.ends
+
+
+* expanding   symbol:  ../LSHL/LSHL_vto1p1.sym # of pins=4
+** sym_path: /home/designer/shared/design_data/xschem/LSHL/LSHL_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/LSHL/LSHL_vto1p1.sch
+.subckt LSHL_vto1p1 Vs Vg VDIG VSS
+*.iopin VDIG
+*.ipin Vs
+*.opin Vg
+*.iopin VSS
+XMD5 VgMD2 Vs VDIG VDIG sg13_hv_pmos w=1u l=0.4u ng=1 m=2
+XMD6 VgMD2 Vs VSS VSS sg13_hv_nmos w=1u l=0.45u ng=1 m=1
+x7 net1 VDIG VSS Vg sg13g2_buf_4
+x1 VgMD2 VDIG VSS net1 sg13g2_inv_1
+.ends
+
+
+* expanding   symbol:  ../Digital_block/DB.sym # of pins=6
+** sym_path: /home/designer/shared/design_data/xschem/Digital_block/DB.sym
+** sch_path: /home/designer/shared/design_data/xschem/Digital_block/DB.sch
+.subckt DB VCC VSS VINS VCN VCP VINR
+*.iopin VCC
+*.iopin VSS
+*.iopin VINS
+*.iopin VINR
+*.iopin VCP
+*.iopin VCN
+x2 VCC VSS VINS PD_out VINR PD_vto1p1
+x1 VCC VSS VCP PD_out VCN NOL_vto1p1
+X3 PD_out 16 VCC VSS BUFFLV_vto1p1
+.ends
+
+
+* expanding   symbol:  ../VCO/stage_vto2p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/VCO/stage_vto2p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/VCO/stage_vto2p1.sch
+.subckt stage_vto2p1 VDD VCONT VOUT VIN VSS
+*.ipin VIN
+*.opin VOUT
+*.iopin VDD
+*.iopin VSS
+*.ipin VCONT
+XM9 net4 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM3 net3 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM5 net2 net4 VSS VSS sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+XM8 net4 VCONT VDD VDD sg13_hv_pmos w=0.7u l=7u ng=1 m=1
+XM4 net3 net3 VDD VDD sg13_hv_pmos w=8u l=4u ng=1 m=1
+XM6 net1 net3 VDD VDD sg13_hv_pmos w=5u l=4u ng=1 m=1
+XM2 VOUT VIN net1 VDD sg13_hv_pmos w=5u l=5u ng=1 m=1
+XM1 VOUT VIN net2 VSS sg13_hv_nmos w=2u l=5u ng=1 m=1
+XM7 net4 VSS VDD VDD sg13_hv_pmos w=3.3u l=7u ng=1 m=1
+.ends
+
+
+* expanding   symbol:  ../VCDL/VCDL_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/VCDL/VCDL_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/VCDL/VCDL_vto1p1.sch
+.subckt VCDL_vto1p1 VDD VCONT VOUT VIN VSS
+*.ipin VIN
+*.opin VOUT
+*.iopin VDD
+*.iopin VSS
+*.ipin VCONT
+XM9 net4 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM3 net3 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM5 net2 net4 VSS VSS sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+XM8 net4 VCONT VDD VDD sg13_hv_pmos w=10u l=7u ng=1 m=1
+XM4 net3 net3 VDD VDD sg13_hv_pmos w=8u l=4u ng=1 m=1
+XM6 net1 net3 VDD VDD sg13_hv_pmos w=5u l=4u ng=1 m=1
+XM2 VOUT VIN net1 VDD sg13_hv_pmos w=5u l=5u ng=1 m=1
+XM1 VOUT VIN net2 VSS sg13_hv_nmos w=2u l=5u ng=1 m=1
+XM7 net4 VDD VDD VDD sg13_hv_pmos w=0.5u l=7u ng=1 m=1
+.ends
+
+
+* expanding   symbol:  ../PD/PD_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/PD/PD_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/PD/PD_vto1p1.sch
+.subckt PD_vto1p1 VCC VSS VINS V_PWM VINR
+*.iopin V_PWM
+*.iopin VCC
+*.iopin VSS
+*.iopin VINS
+*.iopin VINR
+x3 net2 V_PWM VCC VSS V_N sg13g2_nor2_1
+x1 V_N net1 VCC VSS V_PWM sg13g2_nor2_1
+x5 VCC VSS VFE1 VINR net2 SPG_vto1p1
+x2 VCC VSS VFE1 VINS net1 SPG_vto1p1
+C2 VFE1 VSS 100f m=1
+C1 VFE1 VSS 100f m=1
+.ends
+
+
+* expanding   symbol:  ../NOL/NOL_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/NOL/NOL_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/NOL/NOL_vto1p1.sch
+.subckt NOL_vto1p1 VCC VSS VCP CLK VCN
+*.iopin CLK
+*.iopin VCP
+*.iopin VCN
+*.iopin VCC
+*.iopin VSS
+x5 CLK VCC VSS A1 sg13g2_inv_1
+x3 A1 B1 VCC VSS C1 sg13g2_nor2_1
+x1 B2 CLK VCC VSS C2 sg13g2_nor2_1
+x2 B1 VCC VSS net1 sg13g2_inv_1
+x6 B2 VCC VSS net2 sg13g2_inv_2
+x7 net1 VCC VSS net3 sg13g2_inv_2
+x8 net2 VCC VSS VCN sg13g2_inv_4
+x9 net3 VCC VSS VCP sg13g2_inv_4
+x11 VCC VSS C1 B2 large_delay_vto1p1
+x4 VCC VSS C2 B1 large_delay_vto1p1
+.ends
+
+
+* expanding   symbol:  /home/designer/shared/design_data/xschem/BUFFLV/BUFFLV_vto1p1.sym # of pins=4
+** sym_path: /home/designer/shared/design_data/xschem/BUFFLV/BUFFLV_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/BUFFLV/BUFFLV_vto1p1.sch
+.subckt BUFFLV_vto1p1 Vs Vg VDIG VSS
+*.iopin VDIG
+*.ipin Vs
+*.opin Vg
+*.iopin VSS
+x7 net1 VDIG VSS net2 sg13g2_buf_4
+x2 Vs VDIG VSS net1 sg13g2_buf_1
+x1 net2 VDIG VSS net3 sg13g2_buf_16
+x3[0] net3 VDIG VSS Vg sg13g2_buf_16
+x3[1] net3 VDIG VSS Vg sg13g2_buf_16
+x3[2] net3 VDIG VSS Vg sg13g2_buf_16
+x3[3] net3 VDIG VSS Vg sg13g2_buf_16
+.ends
+
+
+* expanding   symbol:  ../SPG/SPG_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/design_data/xschem/SPG/SPG_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/SPG/SPG_vto1p1.sch
+.subckt SPG_vto1p1 VCC VSS VFE VIN VRE
+*.iopin VIN
+*.iopin VFE
+*.iopin VRE
+*.iopin VCC
+*.iopin VSS
+x1 dly7 VCC VSS dly8 sg13g2_inv_1
+x2 predly VCC VSS net2 sg13g2_inv_1
+x3 net3 VCC VSS predly sg13g2_inv_1
+x4 dly8 VCC VSS net1 sg13g2_inv_1
+x5 VIN VCC VSS net3 sg13g2_inv_2
+x6 predly VCC VSS V_gatein sg13g2_inv_8
+x7 net2 dly8 VCC VSS VFE sg13g2_and2_2
+x8 net1 predly VCC VSS VRE sg13g2_and2_2
+x10 VCC VSS V_gatein dly7 large_delay_vto1p1
+.ends
+
+
+* expanding   symbol:  ../large_delay/large_delay_vto1p1.sym # of pins=4
+** sym_path: /home/designer/shared/design_data/xschem/large_delay/large_delay_vto1p1.sym
+** sch_path: /home/designer/shared/design_data/xschem/large_delay/large_delay_vto1p1.sch
+.subckt large_delay_vto1p1 VCC VSS VIN VOUT
+*.iopin VIN
+*.iopin VOUT
+*.iopin VCC
+*.iopin VSS
+x1[0] VIN VCC VSS n2 sg13g2_dlygate4sd3_1
+x1[1] n2 VCC VSS n3 sg13g2_dlygate4sd3_1
+x1[2] n3 VCC VSS n4 sg13g2_dlygate4sd3_1
+x1[3] n4 VCC VSS n5 sg13g2_dlygate4sd3_1
+x1[4] n5 VCC VSS VOUT sg13g2_dlygate4sd3_1
+.ends
+
+.GLOBAL GND
+.end

@@ -1,0 +1,76 @@
+** sch_path: /home/designer/shared/TORepo_IHPNov2024_TDBuck/design_data/xschem/VCO/tb_VCO_vto1p1.sch
+**.subckt tb_VCO_vto1p1
+x1 VCONT VSS VDD V_1 V_2 VCO_vto1p1
+**** begin user architecture code
+
+vvdd vdd 0 dc 3.3
+vvss vss 0 0
+vvcont VCONT 0 dc 1.65
+*.option temp = 200
+.ic v(V_1) = 0
+.ic v(V_2) = 3.3
+.save v(V_1)
+
+.control
+   compose vin_var start=0.1 stop=3.3 step=0.2
+   foreach val $&vin_var
+     alter vvcont $val
+     tran 5n 50u
+   end
+wrdata ../../sim_data/data_VCO_vto1p1.txt tran1.v(V_1) tran2.v(V_1) tran3.v(V_1) tran4.v(V_1) tran5.v(V_1) tran6.v(V_1) tran7.v(V_1) tran8.v(V_1) tran9.v(V_1) tran10.v(V_1) tran11.v(V_1) tran12.v(V_1) tran13.v(V_1) tran14.v(V_1) tran15.v(V_1) tran16.v(V_1) tran17.v(V_1)
+plot tran1.v(V_1) (tran9.v(V_1)+4) (tran17.v(V_1)+8)
+.endc
+
+
+
+
+.param corner=0
+
+.if (corner==0)
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ
+.lib /opt/pdks/ihp-sg13g2/libs.tech/ngspice/models/cornerCAP.lib cap_typ
+.endif
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  VCO_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/TORepo_IHPNov2024_TDBuck/design_data/xschem/VCO/VCO_vto1p1.sym
+** sch_path: /home/designer/shared/TORepo_IHPNov2024_TDBuck/design_data/xschem/VCO/VCO_vto1p1.sch
+.subckt VCO_vto1p1 VCONT VSS VDD V_1 V_2
+*.ipin VCONT
+*.iopin VDD
+*.iopin VSS
+*.opin V_1
+*.opin V_2
+x1 VDD VCONT V_1 V_5 VSS stage_vto1p1
+x2 VDD VCONT V_2 V_1 VSS stage_vto1p1
+x3 VDD VCONT V_3 V_2 VSS stage_vto1p1
+x4 VDD VCONT V_4 V_3 VSS stage_vto1p1
+x5 VDD VCONT V_5 V_4 VSS stage_vto1p1
+.ends
+
+
+* expanding   symbol:  stage_vto1p1.sym # of pins=5
+** sym_path: /home/designer/shared/TORepo_IHPNov2024_TDBuck/design_data/xschem/VCO/stage_vto1p1.sym
+** sch_path: /home/designer/shared/TORepo_IHPNov2024_TDBuck/design_data/xschem/VCO/stage_vto1p1.sch
+.subckt stage_vto1p1 VDD VCONT VOUT VIN VSS
+*.ipin VIN
+*.opin VOUT
+*.iopin VDD
+*.iopin VSS
+*.ipin VCONT
+XM9 net4 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM3 net3 net4 VSS VSS sg13_hv_nmos w=5u l=0.5u ng=1 m=1
+XM5 net2 net4 VSS VSS sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+XM8 net4 VCONT VDD VDD sg13_hv_pmos w=0.5u l=7u ng=1 m=1
+XM4 net3 net3 VDD VDD sg13_hv_pmos w=8u l=4u ng=1 m=1
+XM6 net1 net3 VDD VDD sg13_hv_pmos w=5u l=4u ng=1 m=1
+XM2 VOUT VIN net1 VDD sg13_hv_pmos w=5u l=5u ng=1 m=1
+XM1 VOUT VIN net2 VSS sg13_hv_nmos w=2u l=5u ng=1 m=1
+XM7 net4 VSS VDD VDD sg13_hv_pmos w=3.5u l=7u ng=1 m=1
+.ends
+
+.end
