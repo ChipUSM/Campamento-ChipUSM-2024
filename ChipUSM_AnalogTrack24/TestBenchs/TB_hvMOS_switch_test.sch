@@ -97,7 +97,7 @@ format="tcleval( @value )"
 value="
 .lib cornerMOShv.lib mos_tt
 "}
-C {code.sym} -120 -260 0 0 {name=Simulation_Parameters only_toplevel=false 
+C {code.sym} -120 -260 0 0 {name=Simulation_Parameters only_toplevel=false spice_ignore=false
 
 value="
 .param Vdd = 3.3
@@ -105,14 +105,14 @@ value="
 .param R = 3.3
 .param VH = 3.3
 .param D = 0.5
-*.param T = 1u
-.param T = 0.1u
+
+*Seteo de periodo 
+.param T = 0.01u
+
 .param TR = 1n
 .param TF = 1n
-*.param TdR = 1n
-.param TdR = 1n
-*.param TdF =
-.param TdF = 1n
+.param TdR = 0.0001n
+.param TdF = 0.0001n
 .param Del = 0.05u
 .param temp = 27
 
@@ -195,6 +195,27 @@ value="
 .param l_M2 =0.45u
 .param ng_M2 =1
 
+
+
+"}
+C {code.sym} 640 -240 0 0 {name=Simulation_Parameters1 only_toplevel=false spice_ignore=true 
+
+value="
+.param Vdd = 3.3
+*.param R = 1.4
+.param R = 3.3
+.param VH = 3.3
+.param D = 0.5
+*.param T = 1u
+.param T = 0.1u
+.param TR = 1n
+.param TF = 1n
+*.param TdR = 1n
+.param TdR = 1n
+*.param TdF =
+.param TdF = 1n
+.param Del = 0.05u
+.param temp = 27
 
 
 "}

@@ -86,7 +86,7 @@ value="
 .control
 reset 
 alter Vg 3.3
-dc Vds 0 0.3 0.01 
+dc Vds 0 1 0.01 
 *dc Vds 0 0.5 0.01 temp 0 27 1
 let Vds_M2 = v(Vd) 
 
@@ -100,7 +100,7 @@ let Ron_M22 = 1/G_M22
 plot I_M2 vs Vds_M2
 plot Ron_M2 vs Vds_M2
 
-meas dc RonM2 FIND Ron_M2 AT=100m
+meas dc RonM2 FIND Ron_M2 AT=500m
 
 *let VthM1_off =  @n.xm1.nsg13_hv_pmos[vth]  
 *let VthM2 =  @n.xm2.nsg13_hv_nmos[vth]
@@ -111,7 +111,7 @@ meas dc RonM2 FIND Ron_M2 AT=100m
 .control
 reset 
 alter Vg 0
-dc Vd_M1 3 3.3 0.01 
+dc Vd_M1 2.3 3.3 0.01 
 *dc Vd_M1 2 3.3 0.01 temp 0 27 1
 
 let Vsd_M1 = v(Vdd) -v(Vd_p)
@@ -124,7 +124,7 @@ let Ron_M11 = -1/G_M11
 plot Ron_M1 vs Vsd_M1
 plot I_M1 vs Vsd_M1
 
-meas dc RonM1 FIND Ron_M1 AT=3.1
+meas dc RonM1 FIND Ron_M1 AT=2.8
 
 *plot Ron_M11 
 *plot Ron_M11 vs Vsd_M1
@@ -178,7 +178,7 @@ C {lab_pin.sym} -480 -230 0 0 {name=p9 sig_type=std_logic lab=Vdd}
 C {ammeter.sym} -700 -180 0 0 {name=VdM2 savecurrent=true spice_ignore=0}
 C {vsource.sym} -750 -360 0 0 {name=Vd_M1 value=3.3 savecurrent=false}
 C {lab_pin.sym} -750 -420 0 0 {name=p6 sig_type=std_logic lab=Vd_p}
-C {code.sym} -1130 -330 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=true
+C {code.sym} -1130 -330 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=false
 
 value="
 .param temp=27
@@ -195,7 +195,7 @@ value="
 
 
 "}
-C {code.sym} -1370 -330 0 0 {name=POWER_MOS_Parameters_Sol only_toplevel=false spice_ignore=false
+C {code.sym} -1370 -330 0 0 {name=POWER_MOS_Parameters_Sol only_toplevel=false spice_ignore=true
 
 value="
 .param temp=27
