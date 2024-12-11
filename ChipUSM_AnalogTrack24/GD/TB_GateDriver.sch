@@ -95,23 +95,15 @@ C {code.sym} -700 -670 0 0 {name=GateDriver_Parameters only_toplevel=false
 value="
 .param temp=27
 
-*.param mult_13 = 1
-*.param mult_24 = 6
-*.param mult_5 = 100
-*.param mult_6 = 100
-*.param mult_7 = 200
-*.param mult_8 = 200
-*.param mult_9 = 5
-*.param mult_10 = 5
-
 .param mult_13 = 1
-.param mult_24 = 10
-.param mult_5 = 20
-.param mult_6 = 20
-.param mult_7 = 40
-.param mult_8 = 40
-.param mult_9 = 10
-.param mult_10 = 10
+.param mult_24 = 1
+.param mult_5 = 1
+.param mult_6 = 1
+.param mult_7 = 1
+.param mult_8 = 1
+.param mult_9 = 1
+.param mult_10 = 1
+
 
 .param ng_13 = 1
 .param ng_24 = 1
@@ -150,3 +142,46 @@ C {lab_pin.sym} -260 -560 0 0 {name=p3 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} -230 -560 0 1 {name=p6 sig_type=std_logic lab=VH
 value=\{VH\}}
 C {lab_pin.sym} -110 -490 0 1 {name=p7 sig_type=std_logic lab=Vg}
+C {code.sym} -310 -330 0 0 {name=GateDriver_Parameters_sol only_toplevel=false spice_ignore=true
+
+value="
+.param temp=27
+
+*.param mult_13 = 1
+*.param mult_24 = 6
+*.param mult_5 = 100
+*.param mult_6 = 100
+*.param mult_7 = 200
+*.param mult_8 = 200
+*.param mult_9 = 5
+*.param mult_10 = 5
+
+.param mult_13 = 1
+.param mult_24 = 10
+.param mult_5 = 20
+.param mult_6 = 20
+.param mult_7 = 40
+.param mult_8 = 40
+.param mult_9 = 10
+.param mult_10 = 10
+
+.param ng_13 = 1
+.param ng_24 = 1
+.param ng_5 = 1
+.param ng_6 = 1
+.param ng_7 = 1
+.param ng_8 = 1
+.param ng_9 = 1
+.param ng_10 = 1
+
+.param l_1357 = 0.45u
+.param w_1357 = 0.3u
+.param l_2468 = 0.4u
+.param w_2468 = 0.3u
+.param l_9 = 0.13u
+.param w_9 = 0.15u
+.param l_10 = 0.13u
+.param w_10 = 0.15u
+
+
+"}

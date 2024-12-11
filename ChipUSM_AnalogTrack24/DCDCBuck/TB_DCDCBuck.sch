@@ -202,7 +202,6 @@ C {launcher.sym} -290 -420 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/TB_DCDCBuck.raw tran"
 }
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/DCDC_Buck_V2.sym} -350 -210 0 0 {name=X1}
 C {code.sym} -1341 21 0 0 {name=IC only_toplevel=false  spice_ignore = true
 value="
 .ic v(Vo) = 0
@@ -270,3 +269,4 @@ value="
 
 
 "}
+C {../DCDCBuck/DCDC_Buck.sym} -350 -210 0 0 {name=X1}

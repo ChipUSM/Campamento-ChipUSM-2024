@@ -177,27 +177,18 @@ C {code.sym} -700 -670 0 0 {name=GateDriver_Parameters only_toplevel=false
 value="
 .param temp=27
 
-*.param mult_13 = 1
-*.param mult_24 = 6
-*.param mult_5 = 100
-*.param mult_6 = 100
-*.param mult_7 = 200
-*.param mult_8 = 200
-*.param mult_9 = 5
-*.param mult_10 = 5
-
 .param mult_13 = 1
-.param mult_24 = 6
-.param mult_5 = 30
-.param mult_6 = 25
-.param mult_7 = 250
-.param mult_8 = 200
-.param mult_9 = 15
-.param mult_10 = 15
-*.param mult_5 = 25
-*.param mult_6 = 25
-*.param mult_7 = 75
-*.param mult_8 = 60
+.param mult_24 = 1
+.param mult_5 = 1
+.param mult_6 = 1
+.param mult_7 = 1
+.param mult_8 = 1
+.param mult_9 = 1
+.param mult_10 = 1
+*.param mult_5 = 1
+*.param mult_6 = 1
+*.param mult_7 = 1
+*.param mult_8 = 1
 
 .param ng_13 = 1
 .param ng_24 = 1
@@ -307,3 +298,53 @@ C {gnd.sym} -550 -190 0 0 {name=l9 lab=GND
 value=\{VH\}}
 C {ammeter.sym} -760 -300 2 0 {name=V_Igd_Vdd savecurrent=true spice_ignore=0}
 C {ammeter.sym} -650 -300 2 0 {name=V_Igd_VH savecurrent=true spice_ignore=0}
+C {code.sym} -240 -140 0 0 {name=GateDriver_Parameters1 only_toplevel=false spice_ignore=true
+
+value="
+.param temp=27
+
+*.param mult_13 = 1
+*.param mult_24 = 6
+*.param mult_5 = 100
+*.param mult_6 = 100
+*.param mult_7 = 200
+*.param mult_8 = 200
+*.param mult_9 = 5
+*.param mult_10 = 5
+
+.param mult_13 = 1
+.param mult_24 = 6
+.param mult_5 = 30
+.param mult_6 = 25
+.param mult_7 = 250
+.param mult_8 = 200
+.param mult_9 = 15
+.param mult_10 = 15
+*.param mult_5 = 25
+*.param mult_6 = 25
+*.param mult_7 = 75
+*.param mult_8 = 60
+
+.param ng_13 = 1
+.param ng_24 = 1
+.param ng_5 = 1
+.param ng_6 = 1
+.param ng_7 = 1
+.param ng_8 = 1
+.param ng_9 = 1
+.param ng_10 = 1
+
+*.param w_1357 = 0.3u
+*.param w_2468 = 0.3u
+
+.param l_1357 = 0.4u
+.param w_1357 = 10u
+.param l_2468 = 0.45u
+.param w_2468 = 10u
+.param l_9 = 0.13u
+.param w_9 = 0.15u
+.param l_10 = 0.13u
+.param w_10 = 0.15u
+
+
+"}
