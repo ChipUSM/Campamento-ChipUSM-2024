@@ -65,7 +65,7 @@ C {../TestBenchs/TB_hvMOS_switch_test.sym} -4200 -530 0 0 {name=X6}
 C {../TestBenchs/TB_hvPMOS_cgate-ext.sym} -3870 -700 0 0 {name=X10}
 C {../TestBenchs/TB_hvNMOS_cgate_ext.sym} -3870 -750 0 0 {name=X9}
 C {../TestBenchs/TB_lvNMOS_charact.sym} -3870 -580 0 0 {name=X4}
-C {../DCDCBuck/TB_DCDCBuck_SweepR.sym} -4200 -430 0 0 {name=X7}
+C {../DCDCBuck/TB_DCDCBuck_SweepR.sym} -4200 -430 0 0 {name=X7 spice_ignore=true}
 C {../TestBenchs/TB_lvMOS_Comp.sym} -3870 -530 0 0 {name=X8}
 C {../GD/TB_GateDriver.sym} -3870 -480 0 0 {name=X11}
 C {../GD/TB_GateDriver_hvMOS.sym} -3870 -430 0 0 {name=X12}

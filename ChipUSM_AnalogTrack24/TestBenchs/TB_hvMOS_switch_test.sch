@@ -101,20 +101,25 @@ C {code.sym} -120 -260 0 0 {name=Simulation_Parameters only_toplevel=false spice
 
 value="
 .param Vdd = 3.3
-*.param R = 1.4
-.param R = 3.3
-.param VH = 3.3
+.param R = 0
+.param VH = 0
+* Ciclo de trabajo
 .param D = 0.5
 
 *Seteo de periodo 
-.param T = 0.01u
+.param T = 0
 
 .param TR = 1n
 .param TF = 1n
-.param TdR = 0.0001n
-.param TdF = 0.0001n
-.param Del = 0.05u
-.param temp = 27
+
+*Tiempo muerto Rise
+.param TdR = 0
+*Tiempo muerto Fall
+.param TdF = 0
+*Delay de señal
+.param Del = 0
+
+.option temp = 27
 
 
 "}

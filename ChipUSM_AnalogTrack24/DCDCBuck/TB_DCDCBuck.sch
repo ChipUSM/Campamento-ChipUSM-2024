@@ -39,7 +39,7 @@ C {lab_pin.sym} -360 -348 0 0 {name=p1 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} -464 -250 0 0 {name=p2 sig_type=std_logic lab=Vg_M1}
 C {lab_pin.sym} -464 -210 0 0 {name=p3 sig_type=std_logic lab=Vg_M2}
 C {lab_pin.sym} -216 -230 2 0 {name=p4 sig_type=std_logic lab=Vo}
-C {code.sym} -1230 -310 0 0 {name=POWER_MOS_Parameters only_toplevel=false 
+C {code.sym} -1210 20 0 0 {name=POWER_MOS_Parameters_sol only_toplevel=false spice_ignore=true
 
 value="
 *M1 hvPMOS
@@ -68,7 +68,7 @@ C {gnd.sym} -420 -60 0 0 {name=l4 lab=GND}
 C {vsource.sym} -420 -110 0 0 {name=Vg1 value="PULSE(0 \{VH\} 0 \{TR\} \{TF\} \{T*D\} \{T\} 0)" savecurrent=false}
 C {lab_pin.sym} -420 -20 0 0 {name=p7 sig_type=std_logic lab=Vg_M2}
 C {gnd.sym} -420 90 0 0 {name=l5 lab=GND}
-C {code_shown.sym} -780 -310 0 0 {name=Simulation_Parameters only_toplevel=false 
+C {code.sym} -760 20 0 0 {name=Simulation_Parameters only_toplevel=false spice_ignore=true
 
 value="
 .param Vdd = 3.3
@@ -123,32 +123,19 @@ value="
 .lib cornerMOShv.lib mos_tt
 "}
 C {gnd.sym} -360 -180 0 0 {name=l3 lab=GND}
-C {code_shown.sym} -971 -309 0 0 {name=RLC_Parameters only_toplevel=false 
+C {code_shown.sym} -991 -319 0 0 {name=RLC_Parameters only_toplevel=false spice_ignore=false
 value="
 *Parametros
 *Filtro
-*.param L = 1.37u
-*.param R = 0.9
-*.param C = 416n
-
-* Io=2A 10MHz
-*.param L = 137.5n
-*.param R = 0.6
-*.param C = 62.5n
 
 * Io=1A 10MHz
-*.param L = 275n
-*.param R = 1.2
-*.param C = 31.25n
-
-* Io=1A 8.4MHz
-.param L = 327n
-.param R = 1.2
-.param C = 37n
+.param L = 0
+.param R = 0
+.param C = 0
 
 "}
 C {ammeter.sym} -360 -310 0 0 {name=V_Iin savecurrent=true spice_ignore=0}
-C {devices/code.sym} -1230 -160 0 0 {name=Transient_simulation only_toplevel=false 
+C {devices/code.sym} -1230 -160 0 0 {name=Transient_simulation only_toplevel=false spice_ignore=false
 
 value="
 .save all
@@ -179,14 +166,14 @@ let Ron_M2 = Vds_M2/Id_M2
 
 let DataMeasBegin = SimTime-1u
 
-meas tran Vo_mean AVG v(Vo) from=2.381u to=4.7619u
-meas tran Io_mean AVG Io from=2.381u to=4.7619u
-meas tran Irms_M1 RMS Id_M1 from=2.381u to=4.7619u
-meas tran Irms_M2 RMS Id_M2 from=2.381u to=4.7619u
-meas tran Po_mean AVG Po from=2.381u to=4.7619u
-meas tran Pin_mean AVG Pin from=2.381u to=4.7619u
-meas tran P_M1_mean AVG P_M1 from=2.381u to=4.7619u
-meas tran P_M2_mean AVG P_M2 from=2.381u to=4.7619u
+meas tran Vo_mean AVG v(Vo) from=2u to=4u
+meas tran Io_mean AVG Io from=2u to=4u
+meas tran Irms_M1 RMS Id_M1 from=2u to=4u
+meas tran Irms_M2 RMS Id_M2 from=2u to=4u
+meas tran Po_mean AVG Po from=2u to=4u
+meas tran Pin_mean AVG Pin from=2u to=4u
+meas tran P_M1_mean AVG P_M1 from=2u to=4u
+meas tran P_M2_mean AVG P_M2 from=2u to=4u
 
 let eff = 100*Po_mean/Pin_mean
 let loss_M1 = 100*P_M1_mean/Pin_mean
@@ -216,9 +203,70 @@ descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/TB_DCDCBuck.raw tran"
 }
 C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/DCDC_Buck_V2.sym} -350 -210 0 0 {name=X1}
-C {code.sym} -1231 11 0 0 {name=IC only_toplevel=false  spice_ignore = true
+C {code.sym} -1341 21 0 0 {name=IC only_toplevel=false  spice_ignore = true
 value="
 .ic v(Vo) = 0
 .ic v(Vc) = 0
+
+"}
+C {code.sym} -1230 -320 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=false
+
+value="
+.param temp=27
+.param mult_M1 = 1
+.param w_M1 =0.3u 
+.param l_M1 = 0.4u
+.param ng_M1 = 1
+
+.param mult_M2 = 1
+.param w_M2 =0.3u 
+.param l_M2 =0.45u
+.param ng_M2 =1
+
+
+
+"}
+C {code.sym} -941 21 0 0 {name=RLC_Parameters_sol only_toplevel=false spice_ignore=true
+value="
+*Parametros
+*Filtro
+*.param L = 1.37u
+*.param R = 0.9
+*.param C = 416n
+
+* Io=2A 10MHz
+*.param L = 137.5n
+*.param R = 0.6
+*.param C = 62.5n
+
+* Io=1A 10MHz
+.param L = 275n
+.param R = 1.2
+.param C = 31.25n
+
+* Io=1A 8.4MHz
+*.param L = 327n
+*.param R = 1.2
+*.param C = 37n
+
+"}
+C {code_shown.sym} -820 -320 0 0 {name=Simulation_Parameters1 only_toplevel=false spice_ignore=false
+
+value="
+.param Vdd = 3.3
+.param R = 0
+.param VH = 0
+.param D = 0.5
+
+*Seteo de periodo 
+.param T = 0
+
+.param TR = 1n
+.param TF = 1n
+.param TdR = 0
+.param TdF = 0
+.param Del = 0
+.option temp = 27
+
 
 "}
