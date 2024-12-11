@@ -313,9 +313,9 @@ plot v(Vg_M1) v(Vg_M2)
 
 .end
 "}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/DCDCBuck/DCDC_Buck.sym} -280 -100 0 0 {name=X1}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} -630 40 0 0 {name=X3}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} -630 -210 0 0 {name=X2}
+C {../DCDCBuck/DCDC_Buck.sym} -280 -100 0 0 {name=X1}
+C {../GD/GateDriver.sym} -630 40 0 0 {name=X3}
+C {../GD/GateDriver.sym} -630 -210 0 0 {name=X2}
 C {code.sym} -1280 -300 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=false
 
 value="
