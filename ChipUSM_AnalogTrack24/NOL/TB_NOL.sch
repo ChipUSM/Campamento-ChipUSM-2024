@@ -113,4 +113,4 @@ value="
 .param temp = 27
 
 "}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/NOL_v2p2.sym} 180 -160 0 0 {name=x1}
+C {../NOL/NOL.sym} 180 -160 0 0 {name=x1}

@@ -65,7 +65,7 @@ C {lab_pin.sym} 130 -278 0 0 {name=p1 sig_type=std_logic lab=VH}
 C {lab_pin.sym} 26 -180 0 0 {name=p2 sig_type=std_logic lab=Vg_M1}
 C {lab_pin.sym} 26 -140 0 0 {name=p3 sig_type=std_logic lab=Vg_M2}
 C {lab_pin.sym} 274 -160 2 0 {name=p4 sig_type=std_logic lab=Vo}
-C {code.sym} -1230 -310 0 0 {name=POWER_MOS_Parameters only_toplevel=false 
+C {code.sym} -1230 -140 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=true
 
 value="
 *M1 hvPMOS
@@ -91,19 +91,12 @@ C {gnd.sym} -590 -370 0 0 {name=l2 lab=GND}
 C {lab_pin.sym} -680 -480 0 1 {name=p6 sig_type=std_logic lab=Vs}
 C {gnd.sym} -680 -370 0 1 {name=l4 lab=GND}
 C {vsource.sym} -680 -420 0 1 {name=Vg1 value="PULSE(0 \{Vdd\} 0 \{TR\} \{TF\} \{T*D\} \{T\} 0)" savecurrent=false}
-C {code.sym} -1440 -160 0 0 {name=Simulation_Parameters only_toplevel=false 
+C {code.sym} -1420 -290 0 0 {name=Simulation_Parameters only_toplevel=false 
 
 value="
 .param Vdd = 1.2
 .param VH = 3.3
 .param Del = 0
-
-*.param D = 0.42
-*.param T = 1u
-*.param TR = 7n
-*.param TF = 7n
-*.param TdR = 0.1u
-*.param TdF = 0.1u
 
 *.param D = 0.6364
 .param D = 0.615
@@ -111,15 +104,11 @@ value="
 .param TF = 1p
 .param TdR = 1.5n
 .param TdF = 1.5n
-*.param TdR = 1n
-*.param TdF = 1n
 
 *fs = 10MHz
-*.param T = 0.1u
-*fs = 8.4MHz
-.param T = 0.11905u
+.param T = 0.1u
 
-.param temp = 27
+.option temp = 27
 
 "}
 C {launcher.sym} -1230 -420 0 0 {name=h1
@@ -128,7 +117,7 @@ tclcommand="set show_hidden_texts 1; xschem annotate_op"
 *tclcommand="xschem annotate_op"}
 C {gnd.sym} 130 -110 0 0 {name=l3 lab=GND}
 C {ammeter.sym} 130 -240 0 0 {name=V_Iin savecurrent=true spice_ignore=0}
-C {devices/code.sym} -1230 -160 0 0 {name=Transient_simulation only_toplevel=false 
+C {devices/code.sym} -1220 -290 0 0 {name=Transient_simulation only_toplevel=false 
 
 value="
 .save all
@@ -163,20 +152,20 @@ let Po = Io*v(Vo)
 
 let DataMeasBegin = SimTime-1u
 
-meas tran Vo_mean AVG v(Vo) from=2.381u to=4.7619u
-meas tran Io_mean AVG Io from=2.381u to=4.7619u
-meas tran Po_mean AVG Po from=2.381u to=4.7619u
+meas tran Vo_mean AVG v(Vo) from=2u to=4u
+meas tran Io_mean AVG Io from=2u to=4u
+meas tran Po_mean AVG Po from=2u to=4u
 
-meas tran Pin_Vdd_mean AVG Pin_Vdd from=2.381u to=4.7619u
-meas tran Pin_VH_mean AVG Pin_VH from=2.381u to=4.7619u
+meas tran Pin_Vdd_mean AVG Pin_Vdd from=2u to=4u
+meas tran Pin_VH_mean AVG Pin_VH from=2u to=4u
 let Pin_tot_mean = Pin_Vdd_mean + Pin_VH_mean
 
-meas tran Pin_DCDC_mean AVG Pin_DCDC from=2.381u to=4.7619u
-meas tran P_M1_mean AVG P_M1 from=2.381u to=4.7619u
-meas tran P_M2_mean AVG P_M2 from=2.381u to=4.7619u
-meas tran P_GD_Vdd_mean AVG P_GD_Vdd from=2.381u to=4.7619u
-meas tran P_GD_VH_mean AVG P_GD_VH from=2.381u to=4.7619u
-meas tran P_NOL_mean AVG P_NOL from=2.381u to=4.7619u
+meas tran Pin_DCDC_mean AVG Pin_DCDC from=2u to=4u
+meas tran P_M1_mean AVG P_M1 from=2u to=4u
+meas tran P_M2_mean AVG P_M2 from=2u to=4u
+meas tran P_GD_Vdd_mean AVG P_GD_Vdd from=2u to=4u
+meas tran P_GD_VH_mean AVG P_GD_VH from=2u to=4u
+meas tran P_NOL_mean AVG P_NOL from=2u to=4u
 
 meas TRAN tdR TRIG v(Vg_M1) VAL=0.33 RISE=1 TARG v(Vg_M2) VAL=0.33 RISE=1
 meas TRAN tdF TRIG v(Vg_M1) VAL=2.97 FALL=1 TARG v(Vg_M2) VAL=2.97 FALL=1
@@ -221,19 +210,10 @@ C {gnd.sym} -150 60 0 0 {name=l1 lab=GND}
 C {vsource.sym} -500 -420 0 0 {name=Vdd1 value=\{VH\} savecurrent=false}
 C {lab_pin.sym} -500 -540 0 0 {name=p16 sig_type=std_logic lab=VH}
 C {gnd.sym} -500 -370 0 0 {name=l7 lab=GND}
-C {code.sym} -1430 -310 0 0 {name=GateDriver_Parameters only_toplevel=false 
+C {code.sym} -1420 -140 0 0 {name=GateDriver_Parameters only_toplevel=false spice_ignore=true
 
 value="
 .param temp=27
-
-*.param mult_13 = 1
-*.param mult_24 = 6
-*.param mult_5 = 100
-*.param mult_6 = 100
-*.param mult_7 = 200
-*.param mult_8 = 200
-*.param mult_9 = 5
-*.param mult_10 = 5
 
 .param mult_13 = 1
 .param mult_24 = 6
@@ -280,8 +260,7 @@ C {gnd.sym} -550 -130 0 0 {name=l8 lab=GND
 value=\{VH\}}
 C {lab_pin.sym} -410 -210 0 1 {name=p21 sig_type=std_logic lab=Vs_M1}
 C {lab_pin.sym} -410 -170 0 1 {name=p22 sig_type=std_logic lab=Vs_M2}
-C {NOL_v2p2.sym} -550 -190 0 0 {name=x4}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/DCDC_Buck_V2.sym} 140 -140 0 0 {name=X1}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/DCDC_Buck_V2.sym} -420 -20 0 0 {name=X11 spice_ignore=true}
 C {ammeter.sym} -500 -490 2 1 {name=V_Ivh savecurrent=true spice_ignore=0}
 C {ammeter.sym} -590 -490 2 1 {name=V_Ivdd savecurrent=true spice_ignore=0}
 C {ammeter.sym} -550 -280 0 0 {name=V_Inol savecurrent=true spice_ignore=0}
@@ -304,29 +283,19 @@ value="
 .lib $::SG13G2_MODELS/cornerCAP.lib cap_typ
 "
 "}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GateDriverV2.sym} -200 -230 0 0 {name=X2}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GateDriverV2.sym} -200 20 0 0 {name=X3}
 C {code_shown.sym} -961 -309 0 0 {name=RLC_Parameters only_toplevel=false 
 value="
 *Parametros
 *Filtro
-*.param L = 1.37u
-*.param R = 0.9
-*.param C = 416n
-
-* Io=2A 10MHz
-*.param L = 137.5n
-*.param R = 0.6
-*.param C = 62.5n
 
 * Io=1A 10MHz
-*.param L = 275n
-*.param R = 1.2
-*.param C = 31.25n
-
-* Io=1A 8.4MHz
-.param L = 327n
+.param L = 275n
 .param R = 1.2
-.param C = 37n
+.param C = 31.25n
+
 
 "}
+C {../NOL/NOL.sym} -550 -190 0 0 {name=x4 spice_ignore=false}
+C {../DCDCBuck/DCDC_Buck.sym} 140 -140 0 0 {name=X1}
+C {../GD/GateDriver.sym} -200 -230 0 0 {name=X2}
+C {../GD/GateDriver.sym} -200 20 0 0 {name=X3}

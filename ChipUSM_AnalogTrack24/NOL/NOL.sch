@@ -77,8 +77,6 @@ C {devices/iopin.sym} 1130 -380 0 0 {name=p2 lab=VCP}
 C {devices/iopin.sym} 1140 -520 0 0 {name=p3 lab=VCN}
 C {devices/iopin.sym} 140 -660 2 0 {name=p4 lab=VCC}
 C {devices/iopin.sym} 140 -620 2 0 {name=p5 lab=VSS}
-C {large_delay_v1p1.sym} 560 -520 0 0 {name=x13}
-C {large_delay_v1p1.sym} 560 -380 0 0 {name=x4}
 C {devices/lab_pin.sym} 600 -560 0 0 {name=p6 sig_type=std_logic lab=VCC}
 C {devices/lab_pin.sym} 620 -480 0 0 {name=p7 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 600 -420 0 0 {name=p8 sig_type=std_logic lab=VCC}
@@ -96,3 +94,6 @@ C {devices/lab_pin.sym} 800 -360 0 0 {name=p11 sig_type=std_logic lab=B1}
 C {devices/lab_pin.sym} 420 -560 0 0 {name=p12 sig_type=std_logic lab=C1}
 C {devices/lab_pin.sym} 420 -340 0 0 {name=p13 sig_type=std_logic lab=C2}
 C {devices/lab_pin.sym} 280 -570 0 0 {name=p14 sig_type=std_logic lab=A1}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/large_delay_v1p2.sym} 680 -780 0 0 {name=x10 spice_ignore=true}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/large_delay/large_delay.sym} 560 -520 0 0 {name=x4 spice_ignore=false}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/large_delay/large_delay.sym} 560 -380 0 0 {name=x11 spice_ignore=false}

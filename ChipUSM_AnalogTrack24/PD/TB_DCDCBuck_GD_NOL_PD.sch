@@ -71,7 +71,7 @@ C {lab_pin.sym} 460 -278 0 0 {name=p1 sig_type=std_logic lab=VH}
 C {lab_pin.sym} 356 -180 0 0 {name=p2 sig_type=std_logic lab=Vg_M1}
 C {lab_pin.sym} 356 -140 0 0 {name=p3 sig_type=std_logic lab=Vg_M2}
 C {lab_pin.sym} 604 -160 2 0 {name=p4 sig_type=std_logic lab=Vo}
-C {code.sym} -1210 -320 0 0 {name=POWER_MOS_Parameters only_toplevel=false 
+C {code.sym} -1210 -320 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=true
 
 value="
 *M1 hvPMOS
@@ -136,22 +136,22 @@ let Po = Io*v(Vo)
 
 let DataMeasBegin = SimTime-1u
 
-meas tran Vo_mean AVG v(Vo) from=2.381u to=4.7619u
-meas tran Io_mean AVG Io from=2.381u to=4.7619u
-meas tran Po_mean AVG Po from=2.381u to=4.7619u
+meas tran Vo_mean AVG v(Vo) from=2u to=4u
+meas tran Io_mean AVG Io from=2u to=4u
+meas tran Po_mean AVG Po from=2u to=4u
 
-meas tran Pin_Vdd_mean AVG Pin_Vdd from=2.381u to=4.7619u
-meas tran Pin_VH_mean AVG Pin_VH from=2.381u to=4.7619u
+meas tran Pin_Vdd_mean AVG Pin_Vdd from=2u to=4u
+meas tran Pin_VH_mean AVG Pin_VH from=2u to=4u
 let Pin_tot_mean = Pin_Vdd_mean + Pin_VH_mean
 print Pin_tot_mean
 
-meas tran Pin_DCDC_mean AVG Pin_DCDC from=2.381u to=4.7619u
-meas tran P_M1_mean AVG P_M1 from=2.381u to=4.7619u
-meas tran P_M2_mean AVG P_M2 from=2.381u to=4.7619u
-meas tran P_GD_Vdd_mean AVG P_GD_Vdd from=2.381u to=4.7619u
-meas tran P_GD_VH_mean AVG P_GD_VH from=2.381u to=4.7619u
-meas tran P_NOL_mean AVG P_NOL from=2.381u to=4.7619u
-meas tran P_PD_mean AVG P_PD from=2.381u to=4.7619u
+meas tran Pin_DCDC_mean AVG Pin_DCDC from=2u to=4u
+meas tran P_M1_mean AVG P_M1 from=2u to=4u
+meas tran P_M2_mean AVG P_M2 from=2u to=4u
+meas tran P_GD_Vdd_mean AVG P_GD_Vdd from=2u to=4u
+meas tran P_GD_VH_mean AVG P_GD_VH from=2u to=4u
+meas tran P_NOL_mean AVG P_NOL from=2u to=4u
+meas tran P_PD_mean AVG P_PD from=2u to=4u
 
 meas TRAN tdR TRIG v(Vg_M1) VAL=0.33 RISE=1 TARG v(Vg_M2) VAL=0.33 RISE=1
 meas TRAN tdF TRIG v(Vg_M1) VAL=2.97 FALL=1 TARG v(Vg_M2) VAL=2.97 FALL=1
@@ -242,7 +242,7 @@ C {gnd.sym} -150 -590 0 0 {name=l4 lab=GND}
 C {gnd.sym} -150 -470 0 0 {name=l9 lab=GND}
 C {devices/lab_pin.sym} -590 -220 0 0 {name=p6 sig_type=std_logic lab=VIN_S}
 C {devices/lab_pin.sym} -590 -180 0 0 {name=p19 sig_type=std_logic lab=VIN_Ref}
-C {code.sym} -1430 -320 0 0 {name=GateDriver_Parameters only_toplevel=false 
+C {code.sym} -1430 -320 0 0 {name=GateDriver_Parameters only_toplevel=false spice_ignore=true
 
 value="
 .param temp=27
@@ -278,28 +278,15 @@ value="
 
 
 "}
-C {code.sym} -951 -309 0 0 {name=RLC_Parameters only_toplevel=false 
+C {code.sym} -971 -319 0 0 {name=RLC_Parameters only_toplevel=false 
 value="
 *Parametros
 *Filtro
-*.param L = 1.37u
-*.param R = 0.9
-*.param C = 416n
-
-* Io=2A 10MHz
-*.param L = 137.5n
-*.param R = 0.6
-*.param C = 62.5n
 
 * Io=1A 10MHz
-*.param L = 275n
-*.param R = 1.2
-*.param C = 31.25n
-
-* Io=1A 8.4MHz
-.param L = 327n
+.param L = 275n
 .param R = 1.2
-.param C = 37n
+.param C = 31.25n
 
 "}
 C {code.sym} -1430 -160 0 0 {name=Simulation_Parameters only_toplevel=false 
@@ -316,17 +303,17 @@ value="
 .param Td = D*T
 
 *fs = 10MHz
-*.param T = 0.1u
-*fs = 8.4MHz
-.param T = 0.11905u
+.param T = 0.1u
 
 *.param temp = 27
 *.param temp = -40
-.param temp = 125
+.option temp = 125
 
 "}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GD/GD_vto1p1.sym} 130 -230 0 0 {name=X3}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GD/GD_vto1p1.sym} 130 20 0 0 {name=X2}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/NOL/NOL_vto1p1.sym} -100 -200 0 0 {name=x4}
-C {../PD/PD_vto1p1.sym} -410 -200 0 0 {name=x5}
-C {DCDC_Buck_V2.sym} 470 -140 0 0 {name=X1}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GD/GD_vto1p1.sym} -110 90 0 0 {name=X2 spice_ignore=true}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/DCDCBuck/DCDC_Buck.sym} 480 20 0 0 {name=X11 spice_ignore=true}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/NOL/NOL.sym} -100 -200 0 0 {name=x6}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/PD/PhaseDetector.sym} -410 -200 0 0 {name=x7}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} 130 -230 0 0 {name=X3}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} 130 20 0 0 {name=X8}
+C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/DCDCBuck/DCDC_Buck_V2.sym} 470 -140 0 0 {name=X1}

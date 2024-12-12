@@ -86,7 +86,7 @@ tclcommand="set show_hidden_texts 1; xschem annotate_op"
 *tclcommand="xschem annotate_op"}
 C {gnd.sym} -290 -70 0 0 {name=l3 lab=GND}
 C {ammeter.sym} -290 -200 0 0 {name=V_Iin savecurrent=true spice_ignore=0}
-C {devices/code.sym} -980 30 0 0 {name=Transient_simulation_8.4MHz only_toplevel=false spice_ignore= true
+C {devices/code.sym} -1450 40 0 0 {name=Transient_simulation_8.4MHz only_toplevel=false spice_ignore= true
 
 value="
 .save all
@@ -180,7 +180,7 @@ C {ammeter.sym} -580 -350 0 0 {name=V_Igd_VH1 savecurrent=true spice_ignore=0}
 C {ammeter.sym} -580 -100 0 0 {name=V_Igd_VH2 savecurrent=true spice_ignore=0}
 C {ammeter.sym} -610 -100 0 1 {name=V_Igd_Vdd2 savecurrent=true spice_ignore=0}
 C {ammeter.sym} -610 -350 0 1 {name=V_Igd_Vdd1 savecurrent=true spice_ignore=0}
-C {code.sym} -1050 -450 0 0 {name=Simulation_Parameters only_toplevel=false spice_ignore=false
+C {code.sym} -1240 -460 0 0 {name=Simulation_Parameters only_toplevel=false spice_ignore=false
 
 value="
 .param Vdd = 1.2
@@ -194,15 +194,15 @@ value="
 
 .param TR = 1n
 .param TF = 1n
-.param TdR = 1n
-.param TdF = 1n
+.param TdR = 1.5n
+.param TdF = 1.5n
 
 .option temp = 27
 *.option temp = 125
 *.option temp = -40
 
 "}
-C {code.sym} -1281 -449 0 0 {name=RLC_Parameters only_toplevel=false spice_ignore=false
+C {code.sym} -1391 -459 0 0 {name=RLC_Parameters only_toplevel=false spice_ignore=false
 value="
 *Parametros
 *Filtro
@@ -316,7 +316,7 @@ plot v(Vg_M1) v(Vg_M2)
 C {../DCDCBuck/DCDC_Buck.sym} -280 -100 0 0 {name=X1}
 C {../GD/GateDriver.sym} -630 40 0 0 {name=X3}
 C {../GD/GateDriver.sym} -630 -210 0 0 {name=X2}
-C {code.sym} -1280 -300 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=false
+C {code.sym} -1330 -310 0 0 {name=POWER_MOS_Parameters only_toplevel=false spice_ignore=true
 
 value="
 *M1 hvPMOS
@@ -336,7 +336,7 @@ value="
 
 
 "}
-C {code.sym} -1680 30 0 0 {name=POWER_MOS_Parameters_sol1 only_toplevel=false spice_ignore=true
+C {code.sym} -1230 30 0 0 {name=POWER_MOS_Parameters_sol only_toplevel=false spice_ignore=false
 
 value="
 *M1 hvPMOS
@@ -356,7 +356,7 @@ value="
 
 
 "}
-C {code.sym} -1410 30 0 0 {name=Simulation_Parameters1 only_toplevel=false spice_ignore=true
+C {code.sym} -1660 40 0 0 {name=Simulation_Parameters1 only_toplevel=false spice_ignore=true
 
 value="
 .param Vdd = 1.2
@@ -394,7 +394,7 @@ value="
 *.option temp = -40
 
 "}
-C {code.sym} -1210 30 0 0 {name=GateDriver_Parameters1 only_toplevel=false spice_ignore=true
+C {code.sym} -980 30 0 0 {name=GateDriver_Parameters_sol only_toplevel=false spice_ignore=false
 
 value="
 .param temp=27
@@ -430,7 +430,7 @@ value="
 
 
 "}
-C {code.sym} -1530 -310 0 0 {name=GateDriver_Parameters only_toplevel=false 
+C {code.sym} -1530 -310 0 0 {name=GateDriver_Parameters only_toplevel=false spice_ignore=true
 
 value="
 .param temp=27
@@ -465,3 +465,4 @@ value="
 
 
 "}
+C {../GD/GateDriverV2.sym} -960 -30 0 0 {name=X4 spice_ignore=true}

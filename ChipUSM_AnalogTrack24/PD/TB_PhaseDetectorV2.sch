@@ -48,25 +48,11 @@ value="
 .param T = 0.1u
 .param TR = 1p
 .param TF = 1p
-.param DD = 0.615
-
-*Caso 1 - No funciona bien
-*.param D = 0.8
-*.param Td = 0.03u
+*.param DD = 0.615
 
 *Caso 2 - Funciona bien
-.param D = 0.5
-.param Td = DD*T
-
-*Caso 3 - Funciona bien
-*.param D = 0.615
-*.param Td = 0.03u
-
-*Caso 4 - No funciona bien
-*.param D = 0.615
-*.param Td = 0.08u
-
-
+.param D = 0.3
+.param Td = D*T
 
 
 .param temp = 27
@@ -96,7 +82,7 @@ C {devices/code.sym} -350 -110 0 0 {name=Transient_Simulation only_toplevel=fals
 .control
 set color0 = white
 tran 100p 300n
-plot v(VIN_1) v(VIN_2)+1.5 v(V_PWM)+3
+plot v(VIN_1) v(x1.VRE_R)+1.5 v(VIN_2)+3 v(x1.VRE_S)+4.5 v(V_PWM)+6
 plot v(V_PWM) v(Vctrl)+1.5
 .endc
 
@@ -117,4 +103,4 @@ C {devices/lab_pin.sym} -460 160 0 0 {name=p20 sig_type=std_logic lab=VIN_2}
 C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/PhaseDetector.sym} -280 180 0 0 {name=x1}
 C {devices/lab_pin.sym} -600 260 0 0 {name=p4 sig_type=std_logic lab=Vctrl}
 C {devices/lab_pin.sym} -600 320 0 0 {name=p5 sig_type=std_logic lab=VSS}
-C {vsource.sym} -600 290 0 1 {name=Vg2 value="PULSE(0 \{Vdd\} 0 \{TR\} \{TF\} \{T*0.615\} \{T\} 0)" savecurrent=false}
+C {vsource.sym} -600 290 0 1 {name=Vg2 value="PULSE(0 \{Vdd\} 0 \{TR\} \{TF\} \{T*D\} \{T\} 0)" savecurrent=false}

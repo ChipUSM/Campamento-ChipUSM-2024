@@ -73,10 +73,9 @@ C {../GD/TB_DCDCBuck+GateDrivers.sym} -3870 -380 0 0 {name=X13}
 C {../NOL/TB_NOL.sym} -3560 -680 0 0 {name=X14}
 C {../NOL/TB_GateDriver_hvMOS_NOL.sym} -3560 -630 0 0 {name=X15}
 C {../NOL/TB_DCDCBuck_GateDrivers_NOL.sym} -3560 -580 0 0 {name=X16}
-C {../PD/TB_PhaseDetector.sym} -3560 -530 0 0 {name=X17}
-C {../PD/TB_PhaseDetectorV2.sym} -3560 -480 0 0 {name=X18}
-C {../PD/TB_DCDCBuck_GD_NOL_PD.sym} -3560 -430 0 0 {name=X19}
-C {TB_Top.sym} -3270 -680 0 0 {name=X20}
+C {../PD/TB_PhaseDetectorV2.sym} -3560 -530 0 0 {name=X18}
+C {../PD/TB_DCDCBuck_GD_NOL_PD.sym} -3560 -480 0 0 {name=X19}
+C {TB_Top.sym} -3270 -680 0 0 {name=X20 spice_ignore=false}
 C {../PD/TB_DCDCBuck_GD_NOL_PD_MUX.sym} -3270 -580 0 0 {name=X21}
 C {../Mux/TB_Mux.sym} -3270 -630 0 0 {name=X22}
 C {TB_TopOL_woSimbol.sym} -3270 -530 0 0 {name=X23}
