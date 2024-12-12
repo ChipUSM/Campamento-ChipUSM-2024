@@ -62,4 +62,4 @@ C {sg13g2_stdcells/sg13g2_inv_2.sym} 250 -420 0 0 {name=x5 VDD=VCC VSS=VSS prefi
 C {sg13g2_stdcells/sg13g2_inv_8.sym} 470 -420 0 0 {name=x6 VDD=VCC VSS=VSS prefix=sg13g2_ }
 C {sg13g2_stdcells/sg13g2_and2_2.sym} 710 -500 0 0 {name=x7 VDD=VCC VSS=VSS prefix=sg13g2_ }
 C {sg13g2_stdcells/sg13g2_and2_2.sym} 710 -400 0 0 {name=x8 VDD=VCC VSS=VSS prefix=sg13g2_ }
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/large_delay_v1p2.sym} 480 -160 0 0 {name=x9}
+C {../large_delay/large_delay_v1p2.sym} 480 -160 0 0 {name=x10}

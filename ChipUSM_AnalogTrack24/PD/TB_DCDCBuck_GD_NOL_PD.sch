@@ -242,7 +242,7 @@ C {gnd.sym} -150 -590 0 0 {name=l4 lab=GND}
 C {gnd.sym} -150 -470 0 0 {name=l9 lab=GND}
 C {devices/lab_pin.sym} -590 -220 0 0 {name=p6 sig_type=std_logic lab=VIN_S}
 C {devices/lab_pin.sym} -590 -180 0 0 {name=p19 sig_type=std_logic lab=VIN_Ref}
-C {code.sym} -1430 -320 0 0 {name=GateDriver_Parameters only_toplevel=false spice_ignore=true
+C {code.sym} -1430 -320 0 0 {name=GateDriver_Parameters only_toplevel=false spice_ignore=false
 
 value="
 .param temp=27
@@ -312,8 +312,8 @@ value="
 "}
 C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/GD/GD_vto1p1.sym} -110 90 0 0 {name=X2 spice_ignore=true}
 C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/DCDCBuck/DCDC_Buck.sym} 480 20 0 0 {name=X11 spice_ignore=true}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/NOL/NOL.sym} -100 -200 0 0 {name=x6}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/PD/PhaseDetector.sym} -410 -200 0 0 {name=x7}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} 130 -230 0 0 {name=X3}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/GD/GateDriver.sym} 130 20 0 0 {name=X8}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/Campamento-ChipUSM-2024/ChipUSM_AnalogTrack24/DCDCBuck/DCDC_Buck_V2.sym} 470 -140 0 0 {name=X1}
+C {../NOL/NOL.sym} -100 -200 0 0 {name=x6}
+C {../PD/PhaseDetector.sym} -410 -200 0 0 {name=x7}
+C {../GD/GateDriver.sym} 130 -230 0 0 {name=X3}
+C {../GD/GateDriver.sym} 130 20 0 0 {name=X8}
+C {../DCDCBuck/DCDC_Buck_V2.sym} 470 -140 0 0 {name=X1}

@@ -100,7 +100,7 @@ C {devices/lab_pin.sym} -280 90 0 0 {name=p14 sig_type=std_logic lab=Vdd}
 C {devices/lab_pin.sym} -460 200 0 0 {name=p16 sig_type=std_logic lab=VIN_1}
 C {devices/lab_pin.sym} -280 270 0 0 {name=p17 sig_type=std_logic lab=Vss}
 C {devices/lab_pin.sym} -460 160 0 0 {name=p20 sig_type=std_logic lab=VIN_2}
-C {/home/designer/shared/simulations/IHP-sg13g2/Simulaciones/IHP_Tapeout24/PhaseDetector.sym} -280 180 0 0 {name=x1}
 C {devices/lab_pin.sym} -600 260 0 0 {name=p4 sig_type=std_logic lab=Vctrl}
 C {devices/lab_pin.sym} -600 320 0 0 {name=p5 sig_type=std_logic lab=VSS}
 C {vsource.sym} -600 290 0 1 {name=Vg2 value="PULSE(0 \{Vdd\} 0 \{TR\} \{TF\} \{T*D\} \{T\} 0)" savecurrent=false}
+C {../PD/PhaseDetector.sym} -280 180 0 0 {name=x1}
